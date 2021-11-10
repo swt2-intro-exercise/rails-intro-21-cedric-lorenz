@@ -14,4 +14,11 @@ describe "New author page", type: :feature do
     expect(page).to have_field('author[last_name]')
     expect(page).to have_field('author[homepage]')
   end
+
+  it "should show an error message if the last_name is not specified upon submitting" do
+    visit new_author_path
+    no_last_name_author = Author.new(first_name: first_name, last_name: nil, homepage: homepage)
+    no_last_name_author.save
+    
+    expect(page).to have_text('error')
 end
