@@ -17,17 +17,11 @@ describe "New author page", type: :feature do
     expect(page).to have_field('author[homepage]')
   end
 
-  it "should show an error message if the last_name is not specified upon submitting" do
-    visit edit_author_path(id: @author.id)
-    @author.update(:last_name => nil)
-    expect(page).to have_text("error")
-  end
-
   it "should update the values of the author upon submitting" do
     new_last_name = "Testy"
     visit edit_author_path(id: @author.id)
     @author.update(:last_name => new_last_name)
     @author.reload
-    expect(@author.last_name).to equal(test_author.last_name)
+    expect(@author.last_name).to eq(new_last_name)
   end
 end
