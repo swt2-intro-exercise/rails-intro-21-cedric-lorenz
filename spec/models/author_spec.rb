@@ -28,7 +28,12 @@ describe "Author model", type: :model do
     expect(no_last_name_author).to_not be_valid
   end
 
-   it "should validate an author whose last_name field is not nil" do
+  it "should validate an author whose last_name field is not nil" do
     expect(author).to be_valid
   end
+
+  it "should have an empty papers list" do
+    expect(author.papers).to eq([])
+  end
+
 end

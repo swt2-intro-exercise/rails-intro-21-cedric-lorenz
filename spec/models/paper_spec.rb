@@ -15,4 +15,8 @@ RSpec.describe Paper, type: :model do
    it "should validate an paper that has no nil fields" do
     expect(paper).to be_valid
   end
+
+  it "should have an empty authors list" do
+    expect(paper.authors).to eq([])
+  end
 end
