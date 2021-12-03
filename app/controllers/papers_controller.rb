@@ -3,7 +3,11 @@ class PapersController < ApplicationController
 
   # GET /papers
   def index
-    @papers = Paper.all
+    if params.key?(:year)
+        @papers = Paper.filter_by_year(params[:year])
+    else 
+        @papers = Paper.all
+    end
   end
 
   # GET /papers/1
